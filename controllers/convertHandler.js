@@ -10,13 +10,19 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     var result;
-    if(eval(input) !== undefined) {
-      result = eval(input);
+    let fractionRegExp = /[\/\.]/i;
+
+    if(fractionRegExp.test(input) === true || Number(input) !== NaN){
+      if(input === "") {
+        result = 1;
+      }
+      else {
+        result = eval(input);
+      }
     }
     else {
-      
+      return result = 'invalid number';
     }
-
     return result;
   };
 
