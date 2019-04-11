@@ -28,13 +28,59 @@ function ConvertHandler() {
 
   this.getUnit = function(input) {
     var result;
-
+    switch (input) {
+      case 'gal':
+        result = 'gal';
+        break;
+      case 'lbs':
+      case 'lb':
+        result = 'lbs';
+        break;
+      case 'L':
+      case 'l':
+        result = 'L';
+        break;
+      case 'kg':
+        result = 'kg';
+        break;
+      case 'mi':
+        result = 'mi';
+        break;
+      case 'km':
+        result = 'km';
+        break;
+      default:
+        result = 'invalid unit';
+        break;
+    }
     return result;
   };
 
   this.getReturnUnit = function(initUnit) {
     var result;
-
+    switch(initUnit) {
+      case 'gal':
+        result = 'L';
+        break;
+      case 'L':
+        result = 'gal';
+        break;
+      case 'lbs':
+        result = 'kg';
+        break;
+      case 'kg':
+        result = 'lbs';
+        break;
+      case 'mi':
+        result = 'km';
+        break;
+      case 'km':
+        result = 'mi';
+        break;
+      default:
+        result = 'invalid unit';
+        break;
+    }
     return result;
   };
 
