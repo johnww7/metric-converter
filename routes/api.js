@@ -28,8 +28,10 @@ module.exports = function (app) {
       var initNum = convertHandler.getNum(inputNumber);
       console.log('Init Num: ' + initNum);
       var initUnit = convertHandler.getUnit(inputUnit);
+      console.log('Initial Unit: ' + initUnit);
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
+      console.log('Converted Num: ' + returnNum + ' Converted Unit: ' + returnUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
 
       //res.json
