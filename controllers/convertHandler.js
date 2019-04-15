@@ -12,9 +12,12 @@ function ConvertHandler() {
     var result;
     let fractionRegExp = /[\/\.]/i;
 
-    if(fractionRegExp.test(input) === true && Number(input) !== NaN){
+    if((fractionRegExp.test(input) === true && Number(input) !== NaN) || Number.isInteger(eval(input))){
       if(input === "") {
         result = 1;
+      }
+      else if(/[^0-9\/\.]/.test(input)) {
+        return result = 'invalid number';
       }
       else {
         result = eval(input);
@@ -86,7 +89,29 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     var result;
-
+    switch(unit) {
+      case 'gal':
+        result = 'gallon';
+        break;
+      case 'L':
+        result = 'liters';
+        break;
+      case 'lbs':
+        result = 'pounds';
+        break;
+      case 'kg':
+        result = 'kilograms';
+        break;
+      case 'mi':
+        result = 'miles';
+        break;
+      case 'km':
+        result = 'kilometers';
+        break;
+      default:
+        result = 'invalid unit';
+        break;
+    }
     return result;
   };
 
@@ -126,8 +151,29 @@ function ConvertHandler() {
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
+    if(initNum === 'invalid number') {
+      return result = 'invalid number';
+    }
+    else if(initUnit === 'invalid unit') {
+      return result = 'invalid unit';
+    }
+    else if(initNum === 'invalid number' && initUnit === 'invalid unit') {
+      return result = 'invalid number and unit';
+    }
+    else {
+      //let stringInitUnit = spellOutUnit(initUnit);
+      //let stringRetUnit =
+      var resultString = initNum + ' ' + this.spellOutUnit(initUnit) + ' converts to ' +
+       returnNum + ' ' + this.spellOutUnit(returnUnit);
 
-    return result;
+      return result = {
+        initNum,
+        initUnit,
+        returnNum,
+        returnUnit,
+        string: resultString
+      };
+    }
   };
 
 }
