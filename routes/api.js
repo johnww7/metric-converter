@@ -34,7 +34,7 @@ module.exports = function (app) {
       console.log('Converted Num: ' + returnNum + ' Converted Unit: ' + returnUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       console.log('result: ' + toString);
-      res.send(toString);
+      res.json(toString);
       //res.json
     });
 

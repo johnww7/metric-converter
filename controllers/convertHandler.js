@@ -164,8 +164,8 @@ function ConvertHandler() {
       //let stringInitUnit = spellOutUnit(initUnit);
       //let stringRetUnit =
       var resultString = initNum + ' ' + this.spellOutUnit(initUnit) + ' converts to ' +
-       returnNum + ' ' + this.spellOutUnit(returnUnit);
-
+       Number(Math.round(returnNum+'e5')+'e-5') + ' ' + this.spellOutUnit(returnUnit);
+       //Number(Math.round(returnNum+'e5')+'e-5')
       return result = {
         initNum,
         initUnit,
