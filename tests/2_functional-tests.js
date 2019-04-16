@@ -37,29 +37,59 @@ suite('Functional Tests', function() {
         chai.request(server)
         .get('/api/convert')
         .query({input: '32g'})
-        .end(function(err, rest) {
+        .end(function(err, res) {
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 32);
           assert.equal(res.body.initUnit, 'g');
-          assert.approximately(res.body.returnNum, 'invalid unit', 0.5);
+          assert.approximately(res.body.returnNum, 'invalid unit', 0.1);
           assert.equal(res.body.returnUnit, 'invalid unit');
           done();
         });
-        
+
       });
 
       test('Convert 3/7.2/4kg (invalid number)', function(done) {
+        chai.request(server)
+        .get('/api/convert')
+        .query({input: '3/7.2/kg'})
+        .end(function(err, res) {
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, 3/7.2/);
+          assert.equal(res.body.initUnit, 'kg');
+          assert.approximately(res.body.returnNum, 'invalid number', 0.1);
+          assert.equal(res.body.returnUnit, 'invalid number');
+          done();
+        });
 
-        //done();
       });
 
       test('Convert 3/7.2/4kilomegagram (invalid number and unit)', function(done) {
+        chai.request(server)
+        .get('/api/convert')
+        .query({input: '3/7.2/4kilomegagram'})
+        .end(function(err, res) {
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, 3/7.2/4);
+          assert.equal(res.body.initUnit, 'kilomegagram');
+          assert.approximately(res.body.returnNum, 'invalid number');
+          assert.equal(res.body.returnUnit, 'invalid unit');
+          done();
+        });
 
-        //done();
       });
 
       test('Convert kg (no number)', function(done) {
-
+        chai.request(server)
+        .get('/api/convert')
+        .query({input: 'kg'})
+        .end(function(err, res) {
+          assert.equal(res.status, 200);
+          assert.equal(res.body.initNum, '');
+          assert.equal(res.body.initUnit, 'kg');
+          assert.approximately(res.body.returnNum, 2.20462, 0.1);
+          assert.equal(res.body.returnUnit, 'lbs');
+          done();
+        });
         //done();
       });
 

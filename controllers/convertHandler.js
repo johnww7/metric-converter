@@ -13,15 +13,18 @@ function ConvertHandler() {
     let fractionRegExp = /[\/\.]/i;
 
     if((fractionRegExp.test(input) === true && Number(input) !== NaN) || Number.isInteger(eval(input))){
-      if(input === "") {
-        result = 1;
+      if(/[^0-9\/\.]/.test(input)) {
+        return result = 'invalid number';
       }
-      else if(/[^0-9\/\.]/.test(input)) {
+      else if(/[\/{2,}\.{2,}]/.test(input)) {
         return result = 'invalid number';
       }
       else {
         result = eval(input);
       }
+    }
+    else if(input === "") {
+      result = 1;
     }
     else {
       return result = 'invalid number';
@@ -151,14 +154,14 @@ function ConvertHandler() {
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
-    if(initNum === 'invalid number') {
+    if(initNum === 'invalid number' && initUnit === 'invalid unit') {
+      return result = 'invalid number and unit';
+    }
+    else if(initNum === 'invalid number') {
       return result = 'invalid number';
     }
     else if(initUnit === 'invalid unit') {
       return result = 'invalid unit';
-    }
-    else if(initNum === 'invalid number' && initUnit === 'invalid unit') {
-      return result = 'invalid number and unit';
     }
     else {
       //let stringInitUnit = spellOutUnit(initUnit);
