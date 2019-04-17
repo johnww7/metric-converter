@@ -12,7 +12,24 @@ function ConvertHandler() {
     var result;
     let fractionRegExp = /[\/\.]/i;
 
-    if((fractionRegExp.test(input) === true && Number(input) !== NaN) || Number.isInteger(eval(input))){
+    if(input === "") {
+      console.log('empty input');
+      return result = 1;
+    }
+    else if(/[^0-9\/\.]/.test(input)) {
+      console.log('No decimal or fraction');
+      return result = 'invalid number';
+    }
+    else if(/[\/\.]{2,}/g.test(input)) {
+      console.log('Too many decimal and slashes');
+      return result = 'invalid number';
+    }
+    else {
+      console.log('Return number: ' + eval(input));
+      return result = eval(input);
+    }
+
+    /*if((fractionRegExp.test(input) === true && Number(input) !== NaN) || Number.isInteger(eval(input))){
       if(/[^0-9\/\.]/.test(input)) {
         return result = 'invalid number';
       }
@@ -20,16 +37,16 @@ function ConvertHandler() {
         return result = 'invalid number';
       }
       else {
-        result = eval(input);
+        return result = eval(input);
       }
     }
     else if(input === "") {
-      result = 1;
+      return result = 1;
     }
     else {
       return result = 'invalid number';
-    }
-    return result;
+    }*/
+    //return result;
   };
 
   this.getUnit = function(input) {
