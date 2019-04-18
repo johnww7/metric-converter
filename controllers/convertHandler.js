@@ -20,7 +20,11 @@ function ConvertHandler() {
       console.log('No decimal or fraction');
       return result = 'invalid number';
     }
-    else if(/[\/\.]{2,}/g.test(input)) {
+    /*else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
+      console.log('Too many decimal and slashes');
+      return result = 'invalid number';
+    }*/
+    else if((input.match(/[\/\.]/g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
       return result = 'invalid number';
     }
