@@ -117,7 +117,7 @@ function ConvertHandler() {
       case 'gal':
         result = 'gallon';
         break;
-      case 'L':
+      case 'l':
         result = 'liters';
         break;
       case 'lbs':
