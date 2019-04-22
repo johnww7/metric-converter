@@ -22,11 +22,11 @@ suite('Functional Tests', function() {
       test('Convert 10L (valid input)', function(done) {
        chai.request(server)
         .get('/api/convert')
-        .query({input: '10L'})
+        .query({input: '10l'})
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 10);
-          assert.equal(res.body.initUnit, 'L');
+          assert.equal(res.body.initUnit, 'l');
           assert.approximately(res.body.returnNum, 2.64172, 0.1);
           assert.equal(res.body.returnUnit, 'gal');
           done();
@@ -54,7 +54,7 @@ suite('Functional Tests', function() {
         .query({input: '3/7.2/kg'})
         .end(function(err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.body.initNum, 3/7.2/);
+          assert.equal(res.body.initNum, 3/7.2/4);
           assert.equal(res.body.initUnit, 'kg');
           assert.approximately(res.body.returnNum, 'invalid number', 0.1);
           assert.equal(res.body.returnUnit, 'invalid number');

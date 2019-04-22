@@ -17,37 +17,37 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getNum(input)', function() {
 
     test('Whole number input', function(done) {
-      var input = '32L';
+      var input = '32';
       assert.equal(convertHandler.getNum(input),32);
       done();
     });
 
     test('Decimal Input', function(done) {
-      let input = '32.2mi';
-      assert.equal(ConvertHandler.getNum(input), 32.2);
+      let input = '32.2';
+      assert.equal(convertHandler.getNum(input), 32.2);
       done();
     });
 
     test('Fractional Input', function(done) {
-      let input = '15/3L';
+      let input = '15/3';
       assert.equal(convertHandler.getNum(input), 15/3);
       done();
     });
 
     test('Fractional Input w/ Decimal', function(done) {
-      let input = '32.5/8L';
+      let input = '32.5/8';
       assert.equal(convertHandler.getNum(input), 'invalid number');
       done();
     });
 
     test('Invalid Input (double fraction)', function(done) {
-      let input = '5/8/9mi';
+      let input = '5/8/9';
       assert.equal(convertHandler.getNum(input), 'invalid number');
       done();
     });
 
     test('No Numerical Input', function(done) {
-      let input = 'kg';
+      let input = '';
       assert.equal(convertHandler.getNum(input), 1);
       done();
     });
@@ -92,7 +92,7 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       //see above example for hint
       let input = ['gal','l','mi','km','lbs','kg'];
-      let expect = ['galloons', 'liters', 'miles', 'kilometers', 'pounds', 'kilograms'];
+      let expect = ['gallons', 'liters', 'miles', 'kilometers', 'pounds', 'kilograms'];
       input.forEach(function(ele, i) {
         assert.equal(convertHandler.spellOutUnit(ele), expect[i]);
       });

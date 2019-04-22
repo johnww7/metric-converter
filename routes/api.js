@@ -26,7 +26,7 @@ module.exports = function (app) {
       console.log('num: ' + inputNumber + ' unit: ' + inputUnit);
 
       var initNum = convertHandler.getNum(inputNumber);
-      console.log('Init Num: ' + initNum);
+      console.log('Init Num: ' + typeof(initNum));
       var initUnit = convertHandler.getUnit(inputUnit);
       console.log('Initial Unit: ' + initUnit);
       var returnNum = convertHandler.convert(initNum, initUnit);

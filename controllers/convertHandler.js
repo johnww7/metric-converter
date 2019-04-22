@@ -55,12 +55,14 @@ function ConvertHandler() {
 
   this.getUnit = function(input) {
     var result;
+
     switch (input) {
       case 'gal':
+      case 'GAL':
         result = 'gal';
         break;
       case 'lbs':
-      case 'lb':
+      case 'LBS':
         result = 'lbs';
         break;
       case 'L':
@@ -68,12 +70,15 @@ function ConvertHandler() {
         result = 'l';
         break;
       case 'kg':
+      case 'KG':
         result = 'kg';
         break;
       case 'mi':
+      case 'MI':
         result = 'mi';
         break;
       case 'km':
+      case 'KM':
         result = 'km';
         break;
       default:
@@ -115,7 +120,7 @@ function ConvertHandler() {
     var result;
     switch(unit) {
       case 'gal':
-        result = 'gallon';
+        result = 'gallons';
         break;
       case 'l':
         result = 'liters';
