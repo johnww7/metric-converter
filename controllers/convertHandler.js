@@ -65,7 +65,7 @@ function ConvertHandler() {
         break;
       case 'L':
       case 'l':
-        result = 'L';
+        result = 'l';
         break;
       case 'kg':
         result = 'kg';
@@ -87,9 +87,9 @@ function ConvertHandler() {
     var result;
     switch(initUnit) {
       case 'gal':
-        result = 'L';
+        result = 'l';
         break;
-      case 'L':
+      case 'l':
         result = 'gal';
         break;
       case 'lbs':
@@ -149,7 +149,7 @@ function ConvertHandler() {
       case 'gal':
         result = initNum * galToL;
         break;
-      case 'L':
+      case 'l':
         result = initNum / galToL;
         break;
       case 'lbs':
