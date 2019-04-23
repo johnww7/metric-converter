@@ -10,6 +10,10 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     var result;
+    var formatInput = input.replace(/\s+/g, '');
+    var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
+    console.log(indexOfFirstCharc);
+    var inputNumber = formatInput.slice(0, indexOfFirstCharc);
     let fractionRegExp = /[\/\.]/i;
 
     if(input === "") {
@@ -55,6 +59,9 @@ function ConvertHandler() {
 
   this.getUnit = function(input) {
     var result;
+    var formatInput = input.replace(/\s+/g, '');
+    var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
+    var inputUnit = formatInput.slice(indexOfFirstCharc);
 
     switch (input) {
       case 'gal':
