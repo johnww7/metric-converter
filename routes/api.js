@@ -18,16 +18,16 @@ module.exports = function (app) {
   app.route('/api/convert')
     .get(function (req, res){
       var input = req.query.input;
-      var formatInput = input.replace(/\s+/g, '');
+      /*var formatInput = input.replace(/\s+/g, '');
       var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
       console.log(indexOfFirstCharc);
       var inputNumber = formatInput.slice(0, indexOfFirstCharc);
       var inputUnit = formatInput.slice(indexOfFirstCharc);
-      console.log('num: ' + inputNumber + ' unit: ' + inputUnit);
+      console.log('num: ' + inputNumber + ' unit: ' + inputUnit);*/
 
-      var initNum = convertHandler.getNum(inputNumber);
+      var initNum = convertHandler.getNum(input);
       console.log('Init Num: ' + typeof(initNum));
-      var initUnit = convertHandler.getUnit(inputUnit);
+      var initUnit = convertHandler.getUnit(input);
       console.log('Initial Unit: ' + initUnit);
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);

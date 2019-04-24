@@ -16,44 +16,28 @@ function ConvertHandler() {
     var inputNumber = formatInput.slice(0, indexOfFirstCharc);
     let fractionRegExp = /[\/\.]/i;
 
-    if(input === "") {
+    if(inputNumber === "") {
       console.log('empty input');
       return result = 1;
     }
-    else if(/[^0-9\/\.]/.test(input)) {
+    else if(/[^0-9\/\.]/.test(inputNumber)) {
       console.log('No decimal or fraction');
       return result = 'invalid number';
     }
-    /*else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
-      console.log('Too many decimal and slashes');
-      return result = 'invalid number';
-    }*/
-    else if((input.match(/[\/\.]/g)||[]).length >= 2) {
+    else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
       return result = 'invalid number';
     }
+    /*else if((inputNumber.match(/[\/\.]/g)||[]).length >= 2) {
+      console.log('Too many decimal and slashes');
+      return result = 'invalid number';
+    }*/
     else {
-      console.log('Return number: ' + eval(input));
-      return result = eval(input);
+      console.log('Return number: ' + eval(inputNumber));
+      return result = eval(inputNumber);
     }
 
-    /*if((fractionRegExp.test(input) === true && Number(input) !== NaN) || Number.isInteger(eval(input))){
-      if(/[^0-9\/\.]/.test(input)) {
-        return result = 'invalid number';
-      }
-      else if(/[\/{2,}\.{2,}]/.test(input)) {
-        return result = 'invalid number';
-      }
-      else {
-        return result = eval(input);
-      }
-    }
-    else if(input === "") {
-      return result = 1;
-    }
-    else {
-      return result = 'invalid number';
-    }*/
+
     //return result;
   };
 
@@ -63,7 +47,7 @@ function ConvertHandler() {
     var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
     var inputUnit = formatInput.slice(indexOfFirstCharc);
 
-    switch (input) {
+    switch (inputUnit) {
       case 'gal':
       case 'GAL':
         result = 'gal';
@@ -177,7 +161,7 @@ function ConvertHandler() {
         result = initNum / miToKm;
         break;
       default:
-        result = (initNum === 'invalid number')  ? 'invalid number and unit' : initNum;
+        result = (initNum === 'invalid number')  ? 'invalid number and unit' :  'invalid unit';
         //result = 'invalid unit';
         break;
     }
