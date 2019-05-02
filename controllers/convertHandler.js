@@ -9,24 +9,24 @@
 function ConvertHandler() {
 
   this.getNum = function(input) {
-    var result;
-    var formatInput = input.replace(/\s+/g, '');
-    var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
+    let result;
+    let formatInput = input.replace(/\s+/g, '');
+    let indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
     console.log(indexOfFirstCharc);
-    var inputNumber = formatInput.slice(0, indexOfFirstCharc);
+    let inputNumber = formatInput.slice(0, indexOfFirstCharc);
     let fractionRegExp = /[\/\.]/i;
 
     if(inputNumber === "") {
       console.log('empty input');
-      return result = 1;
+       result = 1;
     }
     else if(/[^0-9\/\.]/.test(inputNumber)) {
       console.log('No decimal or fraction');
-      return result = 'invalid number';
+       result = 'invalid number';
     }
     else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
-      return result = 'invalid number';
+       result = 'invalid number';
     }
     /*else if((inputNumber.match(/[\/\.]/g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
@@ -34,18 +34,18 @@ function ConvertHandler() {
     }*/
     else {
       console.log('Return number: ' + eval(inputNumber));
-      return result = eval(inputNumber);
+      result = eval(inputNumber);
     }
 
 
-    //return result;
+    return result;
   };
 
   this.getUnit = function(input) {
-    var result;
-    var formatInput = input.replace(/\s+/g, '');
-    var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
-    var inputUnit = formatInput.slice(indexOfFirstCharc);
+    let result;
+    let formatInput = input.replace(/\s+/g, '');
+    let indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
+    let inputUnit = formatInput.slice(indexOfFirstCharc);
 
     switch (inputUnit) {
       case 'gal':
@@ -80,7 +80,7 @@ function ConvertHandler() {
   };
 
   this.getReturnUnit = function(initUnit) {
-    var result;
+    let result;
     switch(initUnit) {
       case 'gal':
         result = 'l';
@@ -108,7 +108,7 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
+    let result;
     switch(unit) {
       case 'gal':
         result = 'gallons';
@@ -170,7 +170,7 @@ function ConvertHandler() {
   };
 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
+    let result;
     if(initNum === 'invalid number' && initUnit === 'invalid unit') {
       return result = 'invalid number and unit';
     }
@@ -183,7 +183,7 @@ function ConvertHandler() {
     else {
       //let stringInitUnit = spellOutUnit(initUnit);
       //let stringRetUnit =
-      var resultString = initNum + ' ' + this.spellOutUnit(initUnit) + ' converts to ' +
+      let resultString = initNum + ' ' + this.spellOutUnit(initUnit) + ' converts to ' +
        Number(Math.round(returnNum+'e5')+'e-5') + ' ' + this.spellOutUnit(returnUnit);
        //Number(Math.round(returnNum+'e5')+'e-5')
       return result = {

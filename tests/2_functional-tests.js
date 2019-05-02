@@ -19,7 +19,7 @@ suite('Functional Tests', function() {
 
     suite('GET /api/convert => conversion object', function() {
 
-      test('Convert 10L (valid input)', function(done) {
+     test('Convert 10L (valid input)', function(done) {
        chai.request(server)
         .get('/api/convert')
         .query({input: '10l'})
@@ -29,17 +29,37 @@ suite('Functional Tests', function() {
           assert.equal(res.body.initUnit, 'l');
           assert.approximately(res.body.returnNum, 2.64172, 0.1);
           assert.equal(res.body.returnUnit, 'gal');
-          done();
+          //done();
         });
+       done();
       });
 
       test('Convert 32g (invalid input unit)', function(done) {
         chai.request(server)
         .get('/api/convert')
         .query({input: '32g'})
-        .end(function(err, res) {
+        .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 32);
+          assert.equal(res.body.initUnit, 'g');
+          assert.approximately(res.body.returnNum, 2.64172, 0.1);
+          assert.equal(res.body.returnUnit, 'gal');
+          done();
+        });
+
+      });
+
+      /*test('Convert 32g (invalid input unit)', function(done) {
+        chai.request(server)
+        .get('/api/convert')
+        .query({input: '32g'})
+        .end(function(err, res) {
+          assert.equal(res.status, 200);
+         // console.log('Initial num' + res.body.initNum);
+          assert.isDefined(res.body.initNum, 'Initial number defined');
+          assert.equal(res.body.initNum, 32);
+         // assert.typeOf(res.body.initNum, 'number');
+          assert.isDefined(res.body.initUnit, 'Initial unit defined');
           assert.equal(res.body.initUnit, 'invalid unit');
           assert.equal(res.body.returnNum, 'invalid unit')
           //assert.approximately(res.body.returnNum, 2.20462, 0.1);;
@@ -47,12 +67,12 @@ suite('Functional Tests', function() {
           done();
         });
 
-      });
+      });*/
 
       test('Convert 3/7.2/4kg (invalid number)', function(done) {
         chai.request(server)
         .get('/api/convert')
-        .query({input: '3/7.2/kg'})
+        .query({input: '3/7.2/4kg'})
         .end(function(err, res) {
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 'invalid number');
