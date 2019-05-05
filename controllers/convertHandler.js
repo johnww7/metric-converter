@@ -9,36 +9,41 @@
 function ConvertHandler() {
 
   this.getNum = function(input) {
-    let result;
+    let result = 0;
     let formatInput = input.replace(/\s+/g, '');
     let indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
-    console.log(indexOfFirstCharc);
+    console.log('index: ' + indexOfFirstCharc);
     let inputNumber = formatInput.slice(0, indexOfFirstCharc);
     let fractionRegExp = /[\/\.]/i;
-
+    console.log('inital number input: ' + inputNumber + ' type: ' + typeof(inputNumber));
     if(inputNumber === "") {
       console.log('empty input');
-       result = 1;
+      let emptyInput = 1;
+      return emptyInput;
     }
     else if(/[^0-9\/\.]/.test(inputNumber)) {
       console.log('No decimal or fraction');
-       result = 'invalid number';
+       return 'invalid number';
     }
     else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
-       result = 'invalid number';
+       return 'invalid number';
     }
     /*else if((inputNumber.match(/[\/\.]/g)||[]).length >= 2) {
       console.log('Too many decimal and slashes');
       return result = 'invalid number';
     }*/
     else {
-      console.log('Return number: ' + eval(inputNumber));
-      result = eval(inputNumber);
+      result = eval(inputNumber)
+      if(result === undefined)
+      {
+          console.log('evaluation error');
+      }
+      console.log('Return number: ' + eval(inputNumber) + ' type: ' + typeof(eval(inputNumber)));
+      return result;
     }
 
-
-    return result;
+    //return result;
   };
 
   this.getUnit = function(input) {
@@ -141,6 +146,10 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let result;
 
+    if(initNum === 'invalid number') {
+      return 'invalid number';
+    }
+
     switch(initUnit) {
       case 'gal':
         result = initNum * galToL;
@@ -161,7 +170,7 @@ function ConvertHandler() {
         result = initNum / miToKm;
         break;
       default:
-        result = (initNum === 'invalid number')  ? 'invalid number and unit' :  'invalid unit';
+        result = 'invalid number';
         //result = 'invalid unit';
         break;
     }
