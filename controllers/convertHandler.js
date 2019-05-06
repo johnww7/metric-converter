@@ -181,13 +181,23 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
     if(initNum === 'invalid number' && initUnit === 'invalid unit') {
-      return result = 'invalid number and unit';
+      return result = {
+        initNum: 'invalid number',
+        initUnit: 'invalid unit',
+        string: 'invalid number and unit'
+      };
     }
     else if(initNum === 'invalid number') {
-      return result = 'invalid number';
+      return result = {
+        initNum: 'invalid number',
+        string: 'invalid number'
+      };
     }
     else if(initUnit === 'invalid unit') {
-      return result = 'invalid unit';
+      return result = {
+        initUnit: 'invalid unit',
+        string: 'invalid unit'
+      };
     }
     else {
       //let stringInitUnit = spellOutUnit(initUnit);
