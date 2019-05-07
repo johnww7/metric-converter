@@ -29,10 +29,7 @@ function ConvertHandler() {
       console.log('Too many decimal and slashes');
        return 'invalid number';
     }
-    /*else if((inputNumber.match(/[\/\.]/g)||[]).length >= 2) {
-      console.log('Too many decimal and slashes');
-      return result = 'invalid number';
-    }*/
+
     else {
       result = eval(inputNumber)
       if(result === undefined)
@@ -43,7 +40,6 @@ function ConvertHandler() {
       return result;
     }
 
-    //return result;
   };
 
   this.getUnit = function(input) {
@@ -171,7 +167,6 @@ function ConvertHandler() {
         break;
       default:
         result = 'invalid number';
-        //result = 'invalid unit';
         break;
     }
 
@@ -200,11 +195,9 @@ function ConvertHandler() {
       };
     }
     else {
-      //let stringInitUnit = spellOutUnit(initUnit);
-      //let stringRetUnit =
       let resultString = initNum + ' ' + this.spellOutUnit(initUnit) + ' converts to ' +
        Number(Math.round(returnNum+'e5')+'e-5') + ' ' + this.spellOutUnit(returnUnit);
-       //Number(Math.round(returnNum+'e5')+'e-5')
+
       return result = {
         initNum,
         initUnit,

@@ -19,12 +19,6 @@ module.exports = function (app) {
     .get(function (req, res){
       var input = req.query.input;
       console.log('original input: ' + input);
-      /*var formatInput = input.replace(/\s+/g, '');
-      var indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
-      console.log(indexOfFirstCharc);
-      var inputNumber = formatInput.slice(0, indexOfFirstCharc);
-      var inputUnit = formatInput.slice(indexOfFirstCharc);
-      console.log('num: ' + inputNumber + ' unit: ' + inputUnit);*/
 
       var initNum = convertHandler.getNum(input);
       console.log('Init Num: ' + typeof(initNum) + 'value: ' + initNum);
@@ -36,7 +30,7 @@ module.exports = function (app) {
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       console.log('result: ' + toString);
       res.json(toString);
-      //res.json
+    
     });
 
 };
