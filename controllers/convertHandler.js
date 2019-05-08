@@ -8,25 +8,25 @@
 
 function ConvertHandler() {
 
+  //--------------------------------------------------------------
+  //Function tests input to see if it's a valid number or not, if so
+  //returns either 1 if empty input or returns converted string to number
+  //---------------------------------------------------------------
   this.getNum = function(input) {
     let result = 0;
     let formatInput = input.replace(/\s+/g, '');
     let indexOfFirstCharc = formatInput.search(/[A-Za-z]/);
-    console.log('index: ' + indexOfFirstCharc);
     let inputNumber = formatInput.slice(0, indexOfFirstCharc);
     let fractionRegExp = /[\/\.]/i;
-    console.log('inital number input: ' + inputNumber + ' type: ' + typeof(inputNumber));
     if(inputNumber === "") {
       console.log('empty input');
       let emptyInput = 1;
       return emptyInput;
     }
     else if(/[^0-9\/\.]/.test(inputNumber)) {
-      console.log('No decimal or fraction');
        return 'invalid number';
     }
     else if((input.match(/\//g)||[]).length >= 2 || (input.match(/\./g)||[]).length >= 2) {
-      console.log('Too many decimal and slashes');
        return 'invalid number';
     }
 
@@ -36,12 +36,15 @@ function ConvertHandler() {
       {
           console.log('evaluation error');
       }
-      console.log('Return number: ' + eval(inputNumber) + ' type: ' + typeof(eval(inputNumber)));
       return result;
     }
 
   };
 
+  //-------------------------------------------------------------------------
+  //Functions tests input for valid string unit, if valid returns unit and if
+  //not returns invalid unit.
+  //-----------------------------------------------------------------------
   this.getUnit = function(input) {
     let result;
     let formatInput = input.replace(/\s+/g, '');
@@ -80,6 +83,10 @@ function ConvertHandler() {
     return result;
   };
 
+  //-------------------------------------------------------------------------
+  //Function converts valid initUnit parameter into converted unit, if unit
+  //doesn't exist returns invalid unit.
+  //------------------------------------------------------------------------
   this.getReturnUnit = function(initUnit) {
     let result;
     switch(initUnit) {
@@ -108,6 +115,10 @@ function ConvertHandler() {
     return result;
   };
 
+  //--------------------------------------------------------------------
+  //Function returns spelled out unit of unit parameter if it's a valid unit,
+  //if it doesn't exist returns invalid unit.
+  //--------------------------------------------------------------------
   this.spellOutUnit = function(unit) {
     let result;
     switch(unit) {
@@ -136,6 +147,10 @@ function ConvertHandler() {
     return result;
   };
 
+  //-----------------------------------------------------------------------
+  //Function converts initNum based on initUnit value into converted Number
+  //if initUnit is a valid unit. If not a valid unit returns invalid number.
+  //-----------------------------------------------------------------------
   this.convert = function(initNum, initUnit) {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
@@ -173,6 +188,10 @@ function ConvertHandler() {
     return result;
   };
 
+  //------------------------------------------------------------------------
+  //Function returns an object based on initNum, initUnit, returnNum, and returnUnit
+  //values and a string format based on function parameters.
+  //---------------------------------------------------------------------------- 
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     let result;
     if(initNum === 'invalid number' && initUnit === 'invalid unit') {

@@ -25,13 +25,11 @@ suite('Functional Tests', function() {
         .query({input: '10l'})
         .end(function(err, res){
           assert.equal(res.status, 200);
-         console.log('body :' + JSON.stringify(res.body));
-          console.log('body.initNum ' + res.body.initNum + ' type: ' + typeof(res.body.initNum));
           assert.equal(res.body.initNum, 10);
           assert.equal(res.body.initUnit, 'l');
           assert.approximately(res.body.returnNum, 2.64172, 0.1);
           assert.equal(res.body.returnUnit, 'gal');
-        
+
         });
        done();
       });
@@ -42,9 +40,6 @@ suite('Functional Tests', function() {
         .query({input: '32g'})
         .end(function(err, res){
           assert.equal(res.status, 200);
-          console.log('body :' + JSON.stringify(res.body));
-          console.log('body.initNum ' + res.body.initNum + ' type: ' + typeof(res.body.initNum));
-          console.log('body.initUnit ' + res.body.initUnit + ' type: ' + typeof(res.body.initUnit));
           assert.equal(res.body.initUnit, 'invalid unit');
           done();
         });
@@ -89,7 +84,6 @@ suite('Functional Tests', function() {
           assert.equal(res.body.returnUnit, 'lbs');
           done();
         });
-        //done();
       });
 
     });
